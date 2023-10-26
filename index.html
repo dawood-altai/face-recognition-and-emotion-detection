@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script defer src="face-api.min.js"></script>
-  <script defer src="script.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <video id="video" width="720" height="560" autoplay muted></video>
+  <video id="video" width="720" height="560" autoplay muted>
+  </video>
+  <canvas id="canvas" ></canvas>
+  <button id="startButton">Start Recognition</button>
+  <button id="stopButton" style="display: none;">Stop Recognition</button>
+  <script src="face-api.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
