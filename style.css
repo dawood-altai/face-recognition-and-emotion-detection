@@ -1,23 +1,35 @@
 body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .canvas-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  canvas {
-    
-    position: absolute;
-    
-    
-  }
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: ;
+}
+
+canvas {
+  position: absolute;
+}
+#startButton, #stopButton {
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+ #stopButton:hover {
+  background-color: rgb(118, 164, 199);
+  color: white;
+  transition: 500ms;
+  border-color: aliceblue;
+}
+ #startButton:hover {
+  background-color: rgb(51, 66, 201);
+  color: white;
+  transition: 500ms;
+  border-color: aliceblue;
+}

@@ -1,10 +1,14 @@
+// Taking the required elements from HTMLm html
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
+
+
 let isRecognitionActive = false;
 let recognitionInterval;
 
+// Adding the libraries for face recognition
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
@@ -12,6 +16,7 @@ Promise.all([
   faceapi.nets.faceExpressionNet.loadFromUri('/models')
 ]).then(startVideo);
 
+// Allowing camera to show our face
 function startVideo() {
   navigator.getUserMedia(
     { video: {} },
@@ -22,6 +27,8 @@ function startVideo() {
     (err) => console.error(err)
   );
 }
+
+// Calling libraries to detection from face-api js and drawing lanmarks 
 
 async function startRecognition() {
   isRecognitionActive = true;
@@ -38,13 +45,14 @@ async function startRecognition() {
   }, 100);
 }
 
-
+// Prevent the recognition when the browser is loaded
 function stopRecognition() {
   isRecognitionActive = false;
   clearInterval(recognitionInterval);
   canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 }
 
+// Starting recognition when I click
 startButton.addEventListener('click', () => {
   if (!isRecognitionActive) {
     startRecognition();
@@ -52,6 +60,8 @@ startButton.addEventListener('click', () => {
     stopButton.style.display = 'block';
   }
 });
+
+//Stop the recognition when click
 
 stopButton.addEventListener('click', () => {
   if (isRecognitionActive) {
