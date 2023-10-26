@@ -45,6 +45,33 @@ async function startRecognition() {
   }, 100);
 }
 
+// Function to handle responsive behavior
+function handleResponsiveDesign() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 768) {
+    // Adjust elements or behavior for smaller screens (e.g., mobile or tablet)
+    video.width = 320; // Adjust the video width for smaller screens
+    video.height = 240; // Adjust the video height for smaller screens
+  } else {
+    // Reset elements or behavior for larger screens (e.g., desktop)
+    video.width = 720; // Restore the video width for larger screens
+    video.height = 560; // Restore the video height for larger screens
+  }
+}
+
+// Event listener to handle window resize for responsive design
+window.addEventListener('resize', handleResponsiveDesign);
+
+// Event listener to start recognition
+startButton.addEventListener('click', () => {
+  if (!isRecognitionActive) {
+    startRecognition();
+    startButton.style.display = 'none';
+    stopButton.style.display = 'block';
+  }
+});
+
 // Prevent the recognition when the browser is loaded
 function stopRecognition() {
   isRecognitionActive = false;

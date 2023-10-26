@@ -30,12 +30,13 @@ canvas {
 }
 #video {
   border-radius: 5%; /* Add border-radius to the video element */
+  position: relative;
 }
 
 
 #startButton, #stopButton {
   position: absolute;
-  top:10%;
+  top: 133px;
   background-color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -54,3 +55,15 @@ canvas {
   transition: 500ms;
   border-color: aliceblue;
 }
+
+@media (max-width: 768px) {
+  #video {
+    max-width: 100%; /* Make the video element responsive */
+    height: auto; /* Allow the height to adjust proportionally */
+  }
+}
+
+
+
+
+
