@@ -49,17 +49,15 @@ async function startRecognition() {
       const landmarks = detection.landmarks;
 
       // Get eye landmarks
-      const leftEyeTop = landmarks.getLeftEye()[1].y;
-      const leftEyeBottom = landmarks.getLeftEye()[5].y;
-      const rightEyeTop = landmarks.getRightEye()[1].y;
-      const rightEyeBottom = landmarks.getRightEye()[5].y;
+      const leftEye = landmarks.getLeftEye();
+      const rightEye = landmarks.getRightEye();
 
-      // Set a threshold for determining open or closed eyes
-      const eyeThreshold = 5; // Adjust as needed
+      // You can set a threshold value for the eye aspect ratio (EAR) to determine open or closed eyes
+      const eyeThreshold = 0.2; // Adjust as needed
 
       // Detect open or closed eyes
-      const isLeftEyeOpen = leftEyeTop - leftEyeBottom > eyeThreshold;
-      const isRightEyeOpen = rightEyeTop - rightEyeBottom > eyeThreshold;
+      const isLeftEyeOpen = isEyeOpen(leftEye, eyeThreshold);
+      const isRightEyeOpen = isEyeOpen(rightEye, eyeThreshold);
 
       // You can now use isLeftEyeOpen and isRightEyeOpen as indicators of open or closed eyes
       // You can log or perform actions based on the eye state
@@ -67,6 +65,15 @@ async function startRecognition() {
       console.log('Right Eye Open:', isRightEyeOpen);
     });
   }, 100);
+}
+
+// Function to detect if an eye is open or closed based on the EAR threshold
+function isEyeOpen(eyeLandmarks, threshold) {
+  const topEyelid = (eyeLandmarks[1].y + eyeLandmarks[2].y) / 2;
+  const bottomEyelid = (eyeLandmarks[4].y + eyeLandmarks[5].y) / 2;
+  const eyeHeight = bottomEyelid - topEyelid;
+  const ear = eyeHeight / (eyeLandmarks[3].x - eyeLandmarks[0].x);
+  return ear > threshold;
 }
 
 
