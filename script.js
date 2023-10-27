@@ -30,6 +30,7 @@ function startVideo() {
 
 // Calling libraries to detection from face-api js and drawing lanmarks 
 
+// Update your startRecognition function to include eye detection
 async function startRecognition() {
   isRecognitionActive = true;
   recognitionInterval = setInterval(async () => {
@@ -42,8 +43,32 @@ async function startRecognition() {
     faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+
+    // Additional code to detect eye state
+    resizedDetections.forEach((detection) => {
+      const landmarks = detection.landmarks;
+
+      // Get eye landmarks
+      const leftEyeTop = landmarks.getLeftEye()[1].y;
+      const leftEyeBottom = landmarks.getLeftEye()[5].y;
+      const rightEyeTop = landmarks.getRightEye()[1].y;
+      const rightEyeBottom = landmarks.getRightEye()[5].y;
+
+      // Set a threshold for determining open or closed eyes
+      const eyeThreshold = 5; // Adjust as needed
+
+      // Detect open or closed eyes
+      const isLeftEyeOpen = leftEyeTop - leftEyeBottom > eyeThreshold;
+      const isRightEyeOpen = rightEyeTop - rightEyeBottom > eyeThreshold;
+
+      // You can now use isLeftEyeOpen and isRightEyeOpen as indicators of open or closed eyes
+      // You can log or perform actions based on the eye state
+      console.log('Left Eye Open:', isLeftEyeOpen);
+      console.log('Right Eye Open:', isRightEyeOpen);
+    });
   }, 100);
 }
+
 
 // Function to handle responsive behavior
 function handleResponsiveDesign() {
