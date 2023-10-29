@@ -77,20 +77,19 @@ function handleResponsiveDesign() {
   const screenHeight = window.innerHeight; // Get the screen height as well
 
   if (screenWidth <= 768) {
-    // Adjust elements for smaller screens (e.g., mobile or tablet)
-    video.width = 412; // Set the video width to 412 for mobile
-    video.height = 300; // Set the video height to 300 for mobile
-    canvas.width = 412; // Set the canvas width to 412 for mobile
-    canvas.height = 300; // Set the canvas height to 300 for mobile
+    
+    video.width = 412; 
+    video.height = 300; 
+    canvas.width = 412; 
+    canvas.height = 300; 
   } else {
     // Reset elements for larger screens (e.g., desktop)
-    video.width = 720; // Adjust this as needed for desktop
-    video.height = 560; // Adjust this as needed for desktop
-    canvas.width = 720; // Adjust this as needed for desktop
-    canvas.height = 560; // Adjust this as needed for desktop
-  }
+    video.width = 720; 
+    video.height = 560; 
+    canvas.width = 720; 
+    canvas.height = 560; 
+}
 }
 
 // Event listener to handle window resize for responsive design
 window.addEventListener('resize', handleResponsiveDesign);
-
