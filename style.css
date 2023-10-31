@@ -4,6 +4,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -45,12 +46,11 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
   width: 200px;
   height: 50px;
-
-
-  
+  position: absolute;
+  top: 80px;
+  z-index: 2;  
 }
 
 #stopButton:hover {
@@ -82,7 +82,9 @@ canvas {
  gap: 5px;
  justify-content: center;
  align-items: center;
-
+  position: absolute;
+  top: 0px;
+  margin-top: 10px;
 }
 
 .item {
@@ -95,4 +97,11 @@ canvas {
  .item a {
   text-decoration: none;
   color: white;
+ }
+ .item:hover {
+  background-color: rgb(13, 197, 239);
+  color: black;
+  transition: 1000ms;
+  transform: scale(1.1);
+ 
  }
