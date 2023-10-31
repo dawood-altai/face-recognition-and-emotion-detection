@@ -9,19 +9,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div class="rec-button">
+    <button id="startButton">Start Recognition</button>
+    <button id="stopButton" style="display: none;">Stop Recognition</button>  
+  </div>
+
   <video id="video" width="720" height="560" autoplay muted>
   </video>
   <canvas id="canvas" ></canvas>
-  <button id="startButton">Start Recognition</button>
-  <button id="stopButton" style="display: none;">Stop Recognition</button>
 
- <ul class="menu-container">
-    <li class="item">Home</li>
-    <li class="item">About me</li>
-    <li class="item">Conctact</li>
- </ul>
+  <div class="menu-container">
+    <div class="item"><a href="">Home</a></div>
+    <div class="item">About me</div>
+    <div class="item">Contact</div>
+ </div>
 
   <script src="face-api.min.js" defer></script>
   <script src="script.js" defer></script>
+
 </body>
 </html>
