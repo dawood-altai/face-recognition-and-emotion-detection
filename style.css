@@ -99,9 +99,9 @@ canvas {
   color: white;
  }
  .item:hover {
-  background-color: rgb(13, 197, 239);
+  background-color: rgb(10, 79, 144);
   color: black;
-  transition: 1000ms;
+  transition: 500ms;
   transform: scale(1.1);
  
  }
